@@ -8,6 +8,23 @@
 
 import UIKit
 
+enum ChainType {
+    case Horizontal, Vertical
+}
+
 class PBCChain: NSObject {
-   
+
+    lazy var payments = Array<PBCPayment>()
+    var chainType: ChainType!
+    var score: UInt = 0
+    
+    func addPayment(payment: PBCPayment) {
+        self.payments.append(payment)
+    }
+    
+    override var description: String {
+        get {
+            return "type:\(self.chainType) payments:\(self.payments)"
+        }
+    }
 }

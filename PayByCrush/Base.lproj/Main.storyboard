@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="PayByCrush" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="maK-i9-Uhn"/>
                         <viewControllerLayoutGuide type="bottom" id="khH-OB-KpY"/>
@@ -15,8 +16,117 @@
                     <view key="view" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTJ-kR-bHn">
+                                <rect key="frame" x="75" y="76" width="60" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="giI-NW-jNt"/>
+                                    <constraint firstAttribute="height" constant="20" id="vUX-JJ-mIf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="16" y="28" width="80" height="20"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mP9-ZF-9Qc">
+                                <rect key="frame" x="69" y="96" width="72" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="0mD-1h-AM3"/>
+                                    <constraint firstAttribute="height" constant="20" id="st5-oY-B9e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="16" y="56" width="80" height="20"/>
+                                    <mask key="constraints">
+                                        <exclude reference="0mD-1h-AM3"/>
+                                        <exclude reference="st5-oY-B9e"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moves:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbd-eX-mVV">
+                                <rect key="frame" x="270" y="76" width="60" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="BDs-3l-XLv"/>
+                                    <constraint firstAttribute="width" constant="60" id="LRT-im-Xwl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlb-QF-jqV">
+                                <rect key="frame" x="264" y="96" width="72" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="R2n-5J-oJK"/>
+                                    <constraint firstAttribute="height" constant="20" id="ih8-2o-ioM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="ih8-2o-ioM"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0z-QT-Tm9">
+                                <rect key="frame" x="473" y="76" width="52" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="52" id="67D-xE-qRv"/>
+                                    <constraint firstAttribute="height" constant="20" id="8DD-zN-hXA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="304" y="28" width="80" height="20"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqa-8H-khq">
+                                <rect key="frame" x="463" y="96" width="72" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="3Xl-KH-Ny8"/>
+                                    <constraint firstAttribute="width" constant="72" id="i3V-l7-z3p"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="304" y="56" width="80" height="20"/>
+                                    <mask key="constraints">
+                                        <exclude reference="3Xl-KH-Ny8"/>
+                                        <exclude reference="i3V-l7-z3p"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MTJ-kR-bHn" firstAttribute="centerX" secondItem="mP9-ZF-9Qc" secondAttribute="centerX" id="6dV-Tv-1Db"/>
+                            <constraint firstItem="Qlb-QF-jqV" firstAttribute="top" secondItem="gbd-eX-mVV" secondAttribute="bottom" id="DtI-pr-DtU"/>
+                            <constraint firstItem="Cqa-8H-khq" firstAttribute="top" secondItem="Qlb-QF-jqV" secondAttribute="top" id="Kfl-aD-Jxr"/>
+                            <constraint firstItem="Cqa-8H-khq" firstAttribute="centerX" secondItem="v0z-QT-Tm9" secondAttribute="centerX" id="Nns-6r-wxQ"/>
+                            <constraint firstItem="gbd-eX-mVV" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="OE4-dZ-bPr"/>
+                            <constraint firstItem="gbd-eX-mVV" firstAttribute="centerX" secondItem="Qlb-QF-jqV" secondAttribute="centerX" id="YBF-zG-mEf"/>
+                            <constraint firstItem="v0z-QT-Tm9" firstAttribute="top" secondItem="gbd-eX-mVV" secondAttribute="top" id="err-l1-27P"/>
+                            <constraint firstItem="MTJ-kR-bHn" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="centerX" multiplier="0.25" id="fDo-Wr-oP8"/>
+                            <constraint firstItem="Qlb-QF-jqV" firstAttribute="top" secondItem="mP9-ZF-9Qc" secondAttribute="top" id="jcO-ho-3Ua"/>
+                            <constraint firstItem="gbd-eX-mVV" firstAttribute="top" secondItem="maK-i9-Uhn" secondAttribute="bottom" constant="56" id="kBH-ud-bT7"/>
+                            <constraint firstItem="v0z-QT-Tm9" firstAttribute="trailing" secondItem="3se-qz-xqx" secondAttribute="trailing" multiplier="0.875" id="r2k-4m-TvD"/>
+                            <constraint firstItem="MTJ-kR-bHn" firstAttribute="top" secondItem="gbd-eX-mVV" secondAttribute="top" id="yZR-h6-EDd"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="movesLabel" destination="Qlb-QF-jqV" id="0um-dl-plm"/>
+                        <outlet property="movesNameLabel" destination="gbd-eX-mVV" id="lCo-SG-KeE"/>
+                        <outlet property="scoreLabel" destination="Cqa-8H-khq" id="8dg-LF-ygd"/>
+                        <outlet property="scoreNameLabel" destination="v0z-QT-Tm9" id="5vU-X6-Nu6"/>
+                        <outlet property="targetLabel" destination="mP9-ZF-9Qc" id="QM4-vF-ipb"/>
+                        <outlet property="targetNameLabel" destination="MTJ-kR-bHn" id="ZpL-My-jot"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>

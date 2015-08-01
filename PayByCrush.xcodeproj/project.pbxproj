@@ -15,6 +15,13 @@
 		79C1D7101B688E27002C4DCF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79C1D70F1B688E27002C4DCF /* Images.xcassets */; };
 		79C1D7131B688E27002C4DCF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79C1D7111B688E27002C4DCF /* LaunchScreen.xib */; };
 		79C1D71F1B688E27002C4DCF /* PayByCrushTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1D71E1B688E27002C4DCF /* PayByCrushTests.swift */; };
+		79C1D7291B688E39002C4DCF /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 79C1D7281B688E39002C4DCF /* Sprites.atlas */; };
+		79C1D72B1B688E40002C4DCF /* Levels in Resources */ = {isa = PBXBuildFile; fileRef = 79C1D72A1B688E40002C4DCF /* Levels */; };
+		79C1D72E1B688EA1002C4DCF /* PBCPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1D72D1B688EA1002C4DCF /* PBCPayment.swift */; };
+		79C1D7301B689362002C4DCF /* PBCLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1D72F1B689362002C4DCF /* PBCLevel.swift */; };
+		79C1D7321B689375002C4DCF /* PBCSwap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1D7311B689375002C4DCF /* PBCSwap.swift */; };
+		79C1D7341B689382002C4DCF /* PBCChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1D7331B689382002C4DCF /* PBCChain.swift */; };
+		79C1D7361B68BD34002C4DCF /* PBCTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1D7351B68BD34002C4DCF /* PBCTile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +47,13 @@
 		79C1D7181B688E27002C4DCF /* PayByCrushTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PayByCrushTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79C1D71D1B688E27002C4DCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79C1D71E1B688E27002C4DCF /* PayByCrushTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayByCrushTests.swift; sourceTree = "<group>"; };
+		79C1D7281B688E39002C4DCF /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
+		79C1D72A1B688E40002C4DCF /* Levels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Levels; sourceTree = "<group>"; };
+		79C1D72D1B688EA1002C4DCF /* PBCPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBCPayment.swift; sourceTree = "<group>"; };
+		79C1D72F1B689362002C4DCF /* PBCLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBCLevel.swift; sourceTree = "<group>"; };
+		79C1D7311B689375002C4DCF /* PBCSwap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBCSwap.swift; sourceTree = "<group>"; };
+		79C1D7331B689382002C4DCF /* PBCChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBCChain.swift; sourceTree = "<group>"; };
+		79C1D7351B68BD34002C4DCF /* PBCTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBCTile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,12 +95,15 @@
 		79C1D7011B688E27002C4DCF /* PayByCrush */ = {
 			isa = PBXGroup;
 			children = (
+				79C1D72C1B688E7F002C4DCF /* Model */,
 				79C1D7041B688E27002C4DCF /* AppDelegate.swift */,
 				79C1D7061B688E27002C4DCF /* GameScene.sks */,
 				79C1D7081B688E27002C4DCF /* GameScene.swift */,
 				79C1D70A1B688E27002C4DCF /* GameViewController.swift */,
 				79C1D70C1B688E27002C4DCF /* Main.storyboard */,
 				79C1D70F1B688E27002C4DCF /* Images.xcassets */,
+				79C1D7281B688E39002C4DCF /* Sprites.atlas */,
+				79C1D72A1B688E40002C4DCF /* Levels */,
 				79C1D7111B688E27002C4DCF /* LaunchScreen.xib */,
 				79C1D7021B688E27002C4DCF /* Supporting Files */,
 			);
@@ -116,6 +133,18 @@
 				79C1D71D1B688E27002C4DCF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		79C1D72C1B688E7F002C4DCF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				79C1D72F1B689362002C4DCF /* PBCLevel.swift */,
+				79C1D72D1B688EA1002C4DCF /* PBCPayment.swift */,
+				79C1D7351B68BD34002C4DCF /* PBCTile.swift */,
+				79C1D7311B689375002C4DCF /* PBCSwap.swift */,
+				79C1D7331B689382002C4DCF /* PBCChain.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,7 +230,9 @@
 				79C1D7131B688E27002C4DCF /* LaunchScreen.xib in Resources */,
 				79C1D7101B688E27002C4DCF /* Images.xcassets in Resources */,
 				79C1D7071B688E27002C4DCF /* GameScene.sks in Resources */,
+				79C1D72B1B688E40002C4DCF /* Levels in Resources */,
 				79C1D70E1B688E27002C4DCF /* Main.storyboard in Resources */,
+				79C1D7291B688E39002C4DCF /* Sprites.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,9 +250,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79C1D7321B689375002C4DCF /* PBCSwap.swift in Sources */,
 				79C1D7091B688E27002C4DCF /* GameScene.swift in Sources */,
 				79C1D70B1B688E27002C4DCF /* GameViewController.swift in Sources */,
+				79C1D7361B68BD34002C4DCF /* PBCTile.swift in Sources */,
+				79C1D7341B689382002C4DCF /* PBCChain.swift in Sources */,
+				79C1D72E1B688EA1002C4DCF /* PBCPayment.swift in Sources */,
 				79C1D7051B688E27002C4DCF /* AppDelegate.swift in Sources */,
+				79C1D7301B689362002C4DCF /* PBCLevel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
