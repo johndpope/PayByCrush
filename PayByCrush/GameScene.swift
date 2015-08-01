@@ -328,7 +328,10 @@ class GameScene: SKScene {
         if let firstPayment = chain.payments.first {
             if let lastPayment = chain.payments.last {
                 
-                let centerPoint = CGPointMake( (firstPayment.sprite!.position.x+lastPayment.sprite!.position.x)/2, (firstPayment.sprite!.position.y+lastPayment.sprite!.position.y)/2 - 8 )
+                let firstPos = self.pointForColumn(firstPayment.column, row: firstPayment.row)
+                let lastPos = self.pointForColumn(lastPayment.column, row: lastPayment.row)
+                
+                let centerPoint = CGPointMake( (firstPos.x + lastPos.x)/2, (firstPos.y + lastPos.y)/2 - 8 )
                 
         
                 // Add a label for the score that slowly floats up

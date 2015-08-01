@@ -134,8 +134,6 @@ class PBCLevel: NSObject {
         }
         
         self.possibleSwaps = set
-        
-        println("Possible swaps: \(self.possibleSwaps)")
     }
     
     func shuffle() -> NSSet {

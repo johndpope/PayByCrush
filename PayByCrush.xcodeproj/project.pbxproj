@@ -455,6 +455,7 @@
 				79C1D7241B688E27002C4DCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		79C1D7251B688E27002C4DCF /* Build configuration list for PBXNativeTarget "PayByCrushTests" */ = {
 			isa = XCConfigurationList;
@@ -463,6 +464,7 @@
 				79C1D7271B688E27002C4DCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
