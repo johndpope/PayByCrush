@@ -27,6 +27,9 @@ class GameScene: SKScene {
     
     var selectedSprite: SKSpriteNode = SKSpriteNode()
     
+    let matchSound: SKAction = SKAction.playSoundFileNamed("Sounds/cash register.wav", waitForCompletion: false)
+    let fascinating: SKAction = SKAction.playSoundFileNamed("Sounds/Spock_Fascinating.wav", waitForCompletion: false)
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.initialize()
@@ -48,6 +51,7 @@ class GameScene: SKScene {
         
         //
         self.gameLayer = SKNode()
+        self.gameLayer.hidden = true
         self.addChild(gameLayer)
         
         let layerPosition = CGPointMake(-TileWidth*CGFloat(NumColumns)/2.0, -TileHeight*CGFloat(NumRows)/2.0)
@@ -148,6 +152,8 @@ class GameScene: SKScene {
     
     func addSpritesForPayments(payments: NSSet) {
         
+        self.paymentLayer.removeAllChildren()
+        
         for payment in payments {
             
             if let payment = payment as? PBCPayment {
@@ -156,11 +162,25 @@ class GameScene: SKScene {
             
                 self.paymentLayer.addChild(sprite)
                 payment.sprite = sprite
+                
+                payment.sprite?.alpha = 0
+                payment.sprite?.xScale = 0.5
+                payment.sprite?.yScale = 0.5
+                
+                payment.sprite?.runAction(SKAction.sequence([
+                    SKAction.waitForDuration(0.25, withRange: 0.5),
+                    SKAction.group([
+                        SKAction.fadeInWithDuration(0.25),
+                        SKAction.scaleTo(1.0, duration: 0.25)
+                        ])
+                    ]))
             }
         }
     }
     
     func addTiles() {
+        
+        self.tilelayer.removeAllChildren()
         
         for row in 0...NumRows-1 {
             for column in 0...NumColumns-1 {
@@ -234,6 +254,9 @@ class GameScene: SKScene {
                 }
             }
         }
+        
+        // play sound
+        self.runAction(self.matchSound)
         
         // only continue with the rest of the game after the animations finish
         self.runAction(SKAction.sequence([
@@ -337,19 +360,41 @@ class GameScene: SKScene {
                 // Add a label for the score that slowly floats up
                 let scoreLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
                 scoreLabel.fontSize = 17
-                scoreLabel.text = "\(chain.score)"
+                scoreLabel.text = "$" + chain.score.stringWithCommaSeparator
                 scoreLabel.position = centerPoint
                 scoreLabel.zPosition = 300
                 self.paymentLayer.addChild(scoreLabel)
                 
                 let moveAction = SKAction.moveBy(CGVectorMake(0, 6), duration: 0.7)
                 moveAction.timingMode = .EaseOut
-                scoreLabel.runAction(SKAction.sequence([moveAction, SKAction.removeFromParent()]))
+                scoreLabel.runAction(SKAction.sequence([
+                    SKAction.group([
+                        moveAction,
+                        SKAction.colorizeWithColorBlendFactor(0.5, duration: 0.7)]),
+                    SKAction.removeFromParent()]))
             }
         }
         
     }
     
+    
+    func animateGameOver() {
+        
+        let action = SKAction.moveBy(CGVectorMake(0, -self.size.height), duration: 0.3)
+        action.timingMode = .EaseIn
+        self.gameLayer.runAction(action)
+    }
+    
+    
+    func animateBeginGame() {
+        
+        self.gameLayer.hidden = false
+        
+        self.gameLayer.position = CGPointMake(0, self.size.height)
+        let action = SKAction.moveBy(CGVectorMake(0, -self.size.height), duration: 0.3)
+        action.timingMode = .EaseOut
+        self.gameLayer.runAction(action)
+    }
         
     // MARK: - Helper Functions
     

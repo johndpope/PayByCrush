@@ -22,6 +22,8 @@
 		79C1D7321B689375002C4DCF /* PBCSwap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1D7311B689375002C4DCF /* PBCSwap.swift */; };
 		79C1D7341B689382002C4DCF /* PBCChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1D7331B689382002C4DCF /* PBCChain.swift */; };
 		79C1D7361B68BD34002C4DCF /* PBCTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1D7351B68BD34002C4DCF /* PBCTile.swift */; };
+		79C1D73C1B6DC9D2002C4DCF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1D73B1B6DC9D2002C4DCF /* Extensions.swift */; };
+		79C1D7421B6DFE1F002C4DCF /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 79C1D7411B6DFE1F002C4DCF /* Sounds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		79C1D7311B689375002C4DCF /* PBCSwap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBCSwap.swift; sourceTree = "<group>"; };
 		79C1D7331B689382002C4DCF /* PBCChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBCChain.swift; sourceTree = "<group>"; };
 		79C1D7351B68BD34002C4DCF /* PBCTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBCTile.swift; sourceTree = "<group>"; };
+		79C1D73B1B6DC9D2002C4DCF /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = ../Extensions.swift; sourceTree = "<group>"; };
+		79C1D7411B6DFE1F002C4DCF /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,10 +104,12 @@
 				79C1D7061B688E27002C4DCF /* GameScene.sks */,
 				79C1D7081B688E27002C4DCF /* GameScene.swift */,
 				79C1D70A1B688E27002C4DCF /* GameViewController.swift */,
+				79C1D73B1B6DC9D2002C4DCF /* Extensions.swift */,
 				79C1D70C1B688E27002C4DCF /* Main.storyboard */,
 				79C1D70F1B688E27002C4DCF /* Images.xcassets */,
 				79C1D7281B688E39002C4DCF /* Sprites.atlas */,
 				79C1D72A1B688E40002C4DCF /* Levels */,
+				79C1D7411B6DFE1F002C4DCF /* Sounds */,
 				79C1D7111B688E27002C4DCF /* LaunchScreen.xib */,
 				79C1D7021B688E27002C4DCF /* Supporting Files */,
 			);
@@ -228,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79C1D7131B688E27002C4DCF /* LaunchScreen.xib in Resources */,
+				79C1D7421B6DFE1F002C4DCF /* Sounds in Resources */,
 				79C1D7101B688E27002C4DCF /* Images.xcassets in Resources */,
 				79C1D7071B688E27002C4DCF /* GameScene.sks in Resources */,
 				79C1D72B1B688E40002C4DCF /* Levels in Resources */,
@@ -251,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79C1D7321B689375002C4DCF /* PBCSwap.swift in Sources */,
+				79C1D73C1B6DC9D2002C4DCF /* Extensions.swift in Sources */,
 				79C1D7091B688E27002C4DCF /* GameScene.swift in Sources */,
 				79C1D70B1B688E27002C4DCF /* GameViewController.swift in Sources */,
 				79C1D7361B68BD34002C4DCF /* PBCTile.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 
 let NumColumns = 7
 let NumRows = 7
-let ScoreBase: UInt = 60
+let ScoreBase: UInt = 60000
 
 class PBCLevel: NSObject {
     
@@ -23,6 +23,8 @@ class PBCLevel: NSObject {
     var targetScore: UInt = 0
     
     var maximumMoves: UInt = 0
+    
+    var scoreMultiplier: UInt = 1
     
     override init() {
         super.init()
@@ -494,8 +496,19 @@ class PBCLevel: NSObject {
     }
     
     func calculateScores(chains: Set<PBCChain>) {
+        
         for chain in chains {
-            chain.score = (chain.payments.count > 2) ? ScoreBase * (UInt(chain.payments.count) - 2) : 0
+            
+            chain.score = 0
+            
+            if chain.payments.count > 2 {
+                chain.score = ScoreBase * (UInt(chain.payments.count) - 2) * self.scoreMultiplier
+                self.scoreMultiplier++
+            }            
         }
+    }
+    
+    func resetScoreMultiplier() {
+        self.scoreMultiplier = 1
     }
 }

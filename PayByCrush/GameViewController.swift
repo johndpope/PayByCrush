@@ -8,6 +8,13 @@
 
 import UIKit
 import SpriteKit
+import AVFoundation
+
+
+let ImagePathGameOver = "Bankrupt"
+let ImagePathPass = "Paid in full"
+
+let NumLevels: UInt = 5
 
 extension SKNode {
     class func unarchiveFromFile(file : String) -> SKNode? {
@@ -30,8 +37,13 @@ class GameViewController: UIViewController {
     var scene: GameScene!
     var level: PBCLevel!
     
+    var currentLevel: UInt = 0
     var movesLeft: UInt = 0
     var score: UInt = 0
+    
+    var tapGestureRecognizer: UITapGestureRecognizer? = nil
+    
+    var backgroundMusic: AVAudioPlayer? = nil
     
     @IBOutlet weak var targetNameLabel: UILabel!
     @IBOutlet weak var movesNameLabel: UILabel!
@@ -41,6 +53,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var movesLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
 
+    @IBOutlet weak var gameOverPanel: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,14 +67,10 @@ class GameViewController: UIViewController {
             scene.size = skView.bounds.size
             self.scene = scene
             
-            self.level = PBCLevel(filename: "Levels/Level_0")
-            self.scene.level = self.level
-            self.scene.addTiles()
-            
             let closure: swipeResponder = {(swap: PBCSwap) in
                 
                 self.view.userInteractionEnabled = false
-             
+                
                 if self.level.isPossibleSwap(swap) {
                     
                     self.level.performSwap(swap)
@@ -77,13 +87,22 @@ class GameViewController: UIViewController {
                     // animation for invalid swap
                     self.scene.animateInvalidSwap(swap, completion: {
                         self.view.userInteractionEnabled = true
+                        self.decreaseMoves()
                     })
                 }
             }
             
             self.scene.swipeHandler = closure
             
+            self.gameOverPanel.hidden = true
             skView.presentScene(scene)
+            
+            // BGM
+            let url = NSBundle.mainBundle().URLForResource("JewelBeat - Easy Groove", withExtension: "wav", subdirectory: "Sounds")
+            self.backgroundMusic = AVAudioPlayer(contentsOfURL: url, error: nil)
+            self.backgroundMusic?.numberOfLoops = -1
+            self.backgroundMusic?.volume = 0.3
+            self.backgroundMusic?.play()
             
             self.beginGame()
         }
@@ -111,21 +130,56 @@ class GameViewController: UIViewController {
     }
     
     func updateLabels() {
-        self.targetLabel.text = "\(self.level.targetScore)"
+        self.targetLabel.text = "$" + self.level.targetScore.stringWithCommaSeparator
         self.movesLabel.text = "\(self.movesLeft)"
-        self.scoreLabel.text = "\(self.score)"
+        self.scoreLabel.text = "$" + self.score.stringWithCommaSeparator
     }
-
+    
+    func showGameOver() {
+        
+        self.scene.animateGameOver()
+        
+        self.gameOverPanel.alpha = 0.0
+        self.gameOverPanel.hidden = false
+        self.scene.userInteractionEnabled = false
+        
+        UIView.animateWithDuration(0.5, animations: {
+            self.gameOverPanel.alpha = 1
+        })
+        
+        self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideGameOver")
+        self.view.addGestureRecognizer(self.tapGestureRecognizer!)
+    }
+    
+    func hideGameOver() {
+        
+        self.view.removeGestureRecognizer(self.tapGestureRecognizer!)
+        self.tapGestureRecognizer = nil
+        
+        self.gameOverPanel.hidden = true
+        self.scene.userInteractionEnabled = true
+        
+        self.beginGame()
+    }
+    
     
     // MARK: - Game related functions
     
     
     func beginGame() {
         
+        self.level = PBCLevel(filename: "Levels/Level_\(self.currentLevel)")
+        self.scene.level = self.level
+        self.scene.addTiles()
+        
         self.movesLeft = self.level.maximumMoves
         self.score = 0
         
         self.updateLabels()
+        
+        self.level.resetScoreMultiplier()
+        
+        self.scene.animateBeginGame()
         
         self.shuffle()
     }
@@ -136,7 +190,18 @@ class GameViewController: UIViewController {
     }
     
     func beginNextTurn() {
+        
+        self.decreaseMoves()
+        
         self.level.detectPossibleSwaps() // update for the new turn
+        
+        // no possible swap, shuffle
+        if self.level.possibleSwaps.count == 0 {
+            self.shuffle()
+        }
+        
+        self.level.resetScoreMultiplier()
+        
         self.view.userInteractionEnabled = true
     }
     
@@ -173,5 +238,24 @@ class GameViewController: UIViewController {
                 })
             })
         })
+    }
+    
+    func decreaseMoves() {
+        
+        self.movesLeft--
+        self.updateLabels()
+        
+        if self.movesLeft == 0 {
+            
+            self.gameOverPanel.image = UIImage(named: ImagePathGameOver)
+            self.showGameOver()
+            
+        } else if self.score >= self.level.targetScore {
+            
+            self.currentLevel = (self.currentLevel == NumLevels - 1) ? 0 : self.currentLevel + 1
+            self.gameOverPanel.image = UIImage(named: ImagePathPass)
+            self.showGameOver()
+            
+        }
     }
 }
