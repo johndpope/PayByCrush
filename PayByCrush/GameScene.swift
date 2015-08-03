@@ -170,8 +170,8 @@ class GameScene: SKScene {
                 payment.sprite?.runAction(SKAction.sequence([
                     SKAction.waitForDuration(0.25, withRange: 0.5),
                     SKAction.group([
-                        SKAction.fadeInWithDuration(0.25),
-                        SKAction.scaleTo(1.0, duration: 0.25)
+                        SKAction.fadeInWithDuration(0.3),
+                        SKAction.scaleTo(1.0, duration: 0.3)
                         ])
                     ]))
             }
