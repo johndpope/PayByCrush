@@ -15,5 +15,7 @@ http://www.raywenderlich.com/66877/how-to-make-a-game-like-candy-crush-part-1
 # Todo:
 
 - Polish tiles
+- Add sound effect for win/lose
+- Investigate possible-swap check of level 2
 
 
